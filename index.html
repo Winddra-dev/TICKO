@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TICKO - The Ultimate Tic-Tac-Toe</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <div id="login-screen" class="screen active">
+        <h1>TICKO <i class="fas fa-brain"></i></h1>
+        <h2>The Game Beyond the X and O</h2>
+        <div class="input-group">
+            <label for="username">Nama Panggilan:</label>
+            <input type="text" id="username" placeholder="Masukkan nama Anda..." maxlength="15">
+        </div>
+        <button id="login-button">MASUK & SIAP BERMAIN</button>
+        <p class="note">Ini adalah versi demo. Fitur database dan multiplayer real-time (30 pemain) membutuhkan server backend.</p>
+    </div>
+
+    <div id="main-menu" class="screen">
+        <h1 id="welcome-message">Selamat Datang, Pemain!</h1>
+        <h2>Pilih Mode Bermain:</h2>
+
+        <div class="menu-options">
+            <div id="solo-options" class="options-container">
+                <h3>Pilih Level Bot:</h3>
+                <div class="level-selection">
+                    <button class="level-button" data-level="medium">Medium</button>
+                    <button class="level-button" data-level="intermediate">Intermediate</button>
+                    <button class="level-button" data-level="hard">Hard</button>
+                    <button class="level-button" data-level="expert">Expert</button>
+                    <button class="level-button" data-level="sensei">Sensei</button>
+                </div>
+                <button id="start-solo-game" class="menu-button start-game-btn" disabled>
+                    <i class="fas fa-robot"></i> MULAI SOLO
+                    <span>Lawan: <span id="selected-level-display">Pilih Level</span></span>
+                </button>
+            </div>
+            
+            <button id="multiplayer-lobby-button" class="menu-button" data-mode="multi">
+                <i class="fas fa-globe-americas"></i> MULTIPLAYER (Lobby)
+                <span>Bergabung/Buat Party dengan Kode (Fitur Server)</span>
+            </button>
+        </div>
+    </div>
+
+    <div id="game-screen" class="screen">
+        <header>
+            <h1 id="game-header">TICKO - Arena <span id="current-mode">Solo</span></h1>
+            <button id="back-button"><i class="fas fa-arrow-left"></i> KEMBALI</button>
+        </header>
+
+        <div id="board" class="board-3x3">
+            <div class="cell" data-index="0"></div>
+            <div class="cell" data-index="1"></div>
+            <div class="cell" data-index="2"></div>
+            <div class="cell" data-index="3"></div>
+            <div class="cell" data-index="4"></div>
+            <div class="cell" data-index="5"></div>
+            <div class="cell" data-index="6"></div>
+            <div class="cell" data-index="7"></div>
+            <div class="cell" data-index="8"></div>
+        </div>
+
+        <p id="game-info">Giliran: X</p>
+        <p class="challenge-note">Anda Melawan BOT Level: <span id="bot-level-display"></span></p>
+    </div>
+
+    <div id="minigame-modal" class="modal">
+        <div class="modal-content">
+            <h2><i class="fas fa-gamepad"></i> TANTANGAN MINI-GAME!</h2>
+            <p>Selesaikan tantangan dari level <strong id="minigame-level-display"></strong> untuk menanda sel:</p>
+            
+            <div id="minigame-content">
+                <h3 id="quiz-question">Pertanyaan dimuat...</h3>
+                <input type="text" id="quiz-answer" placeholder="Ketik jawaban Anda di sini...">
+                <p id="quiz-status" class="status-message"></p>
+            </div>
+
+            <button id="submit-answer-button">Kirim Jawaban</button>
+            <button id="close-modal-button" class="hidden">Tutup & Giliran Lawan</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

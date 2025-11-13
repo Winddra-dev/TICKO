@@ -1,0 +1,373 @@
+:root {
+    --primary-color: #3f51b5; /* Indigo */
+    --accent-color: #ff9800; /* Orange */
+    --bg-color: #1a1a2e; /* Dark Blue */
+    --text-color: #f0f0f0;
+    --card-color: #2c2c54; /* Slightly lighter dark blue */
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* ------------------ Screen Management ------------------ */
+.screen {
+    width: 100%;
+    max-width: 500px;
+    padding: 30px;
+    background-color: var(--card-color);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    display: none;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.screen.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+h1 {
+    color: var(--primary-color);
+    margin-bottom: 5px;
+    font-size: 2.5em;
+}
+
+h2 {
+    color: var(--accent-color);
+    margin-bottom: 30px;
+    font-size: 1.2em;
+    font-weight: 300;
+}
+
+/* ------------------ General Buttons & Inputs ------------------ */
+
+.input-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-size: 1em;
+}
+
+button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.1s;
+    margin: 10px 0;
+    width: 100%;
+}
+
+button:hover {
+    background-color: #4a60c7;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+.note {
+    margin-top: 20px;
+    font-size: 0.8em;
+    color: #888;
+}
+
+/* ------------------ Menu Options ------------------ */
+.menu-options {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.menu-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--card-color);
+    border: 2px solid var(--primary-color);
+    padding: 20px;
+    font-size: 1.2em;
+    height: auto;
+}
+
+.menu-button:hover {
+    background-color: #373760;
+}
+
+.menu-button span {
+    font-size: 0.8em;
+    font-weight: normal;
+    margin-top: 5px;
+    color: #bbb;
+}
+
+/* ------------------ Level Selection & Solo Options ------------------ */
+
+#solo-options {
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px solid var(--accent-color);
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+#solo-options h3 {
+    margin-bottom: 10px;
+    color: var(--text-color);
+}
+
+.level-selection {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.level-button {
+    width: auto;
+    padding: 8px 15px;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    border: 1px solid #555;
+    transition: all 0.2s;
+    margin: 0;
+}
+
+.level-button:hover {
+    background-color: #333;
+}
+
+.level-button.selected {
+    background-color: var(--primary-color);
+    border-color: var(--accent-color);
+    transform: scale(1.05);
+}
+
+.start-game-btn {
+    background-color: var(--accent-color);
+    border: none;
+    padding: 15px;
+}
+
+.start-game-btn:disabled {
+    background-color: #555;
+    cursor: not-allowed;
+    transform: scale(1);
+}
+
+.start-game-btn span {
+    font-size: 0.9em;
+    font-weight: normal;
+    color: #eee;
+}
+
+/* ------------------ Game Board Styles ------------------ */
+
+#game-screen header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+#game-screen h1 {
+    font-size: 1.8em;
+    margin: 0;
+}
+
+#back-button {
+    width: auto;
+    padding: 8px 15px;
+    background-color: var(--accent-color);
+}
+
+#back-button:hover {
+    background-color: #ffb74d;
+}
+
+#board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    margin: 20px auto;
+    max-width: 400px;
+}
+
+.cell {
+    background-color: var(--bg-color);
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+    user-select: none;
+}
+
+.cell:hover:not(.X):not(.O) {
+    background-color: #2a2a44;
+    transform: scale(1.02);
+}
+
+.cell.X {
+    color: var(--primary-color);
+}
+
+.cell.O {
+    color: var(--accent-color);
+}
+
+.cell.blocked {
+    background-color: #444;
+    cursor: not-allowed;
+}
+
+#game-info {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+}
+
+.challenge-note {
+    font-style: italic;
+    font-size: 0.9em;
+    color: #aaa;
+}
+
+/* ------------------ Modal Mini-Game ------------------ */
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.8);
+    backdrop-filter: blur(5px);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-content {
+    background-color: var(--card-color);
+    padding: 40px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 450px;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.9);
+    text-align: center;
+    animation: modalPopUp 0.3s ease-out;
+}
+
+@keyframes modalPopUp {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+#minigame-content h3 {
+    color: var(--accent-color);
+    margin: 15px 0;
+}
+
+#quiz-answer {
+    padding: 10px;
+    width: 100%;
+    margin-bottom: 15px;
+    text-align: center;
+    font-size: 1.2em;
+}
+
+.status-message {
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.status-message.correct {
+    color: limegreen;
+}
+
+.status-message.wrong {
+    color: crimson;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Responsiveness */
+@media (max-width: 480px) {
+    .screen {
+        padding: 20px;
+    }
+    h1 {
+        font-size: 2em;
+    }
+    .cell {
+        font-size: 2.5em;
+    }
+    #game-screen header {
+        flex-direction: column;
+        gap: 10px;
+    }
+    #game-screen h1 {
+        text-align: center;
+    }
+    #back-button {
+        width: 100%;
+    }
+    .level-selection {
+        flex-direction: column;
+    }
+    .level-button {
+        width: 100%;
+    }
+}
